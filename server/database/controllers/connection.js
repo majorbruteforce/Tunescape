@@ -12,6 +12,5 @@ module.exports= async function connectToDatabase() {
     console.log("Database error: ", err.message);
   }
 
-
   //mongoose.on
 }
