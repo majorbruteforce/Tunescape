@@ -1,0 +1,11 @@
+*.html linguist-vendored
+
+client/app/*.css linguist-vendored
+client/app/*/*.css linguist-vendored
+client/app/*/*/*.css linguist-vendored
+client/app/*/*/*/*.css linguist-vendored
+
+client/app/*.html linguist-vendored
+client/app/*/*.html linguist-vendored
+client/app/*/*/*.html linguist-vendored
+client/app/*/*/*/*.html linguist-vendored
