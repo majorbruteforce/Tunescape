@@ -7,14 +7,13 @@ async function addMusicToDB(music,hash){
     try{
         console.log(music)
         const newSong= new Song({
-    
             title: music.title,
             artist: music.artist,
             uploadedBy: music.uid,
             thumbnailHash: hash.thumbnailHash,
             musicHash: hash.musicHash
-    
         })
+        console.log("newSong = " + newSong);
         await newSong.save();
         console.log(`${hash.musicHash}/${music.uid} uploaded successfully.`)
     }catch(err){
