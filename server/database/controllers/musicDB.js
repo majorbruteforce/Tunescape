@@ -24,6 +24,10 @@ async function addMusicToDB(music,hash){
 
 }
 
+async function fetchMusicFromDB(){
+    
+}
+
 // async function incrementLikes(songID){
 //     console.log(songID);
 
