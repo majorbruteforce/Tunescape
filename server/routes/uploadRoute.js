@@ -14,7 +14,9 @@ const uploads = upload.fields([{ name: "music" }, { name: "thumbnail" }]);
 
 
 Route.post("/", uploads, async (req, res) => {
-
+  let i =0;
+  console.log(`Connection  = ${i}` );
+  i++;
   try {
     console.log("req.body = " ,req.body);
     const hash={

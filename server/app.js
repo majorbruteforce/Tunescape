@@ -14,6 +14,6 @@ app.get("/", (req, res) => {
 
 app.use('/upload',uploadRoute);
 
-app.listen(3000, () => {
-  console.log(`Server live at http://127.0.0.1:3000`);
+app.listen(3080, () => {
+  console.log(`Server live at http://127.0.0.1:3080`);
 });
