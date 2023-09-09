@@ -9,7 +9,7 @@ const songSchema= new mongoose.Schema({
         type: String,
         required: true
     },
-    songHash: {
+    musicHash: {
         type: String,
         required: true
     },
