@@ -2,15 +2,15 @@ const mongoose= require("mongoose");
 const Song= require("../schemas/song.js");
 
   
-async function addSongToDB(music,songHash){
+async function addSongToDB(music,hash){
     
     const newSong= new Song({
 
         title: music.title,
         artist: music.artist,
-        songHash: songHash,
-        thumbnailHash: music.thumbnailHash,
-        uploadedBy: music.uid
+        uploadedBy: music.uid,
+        thumbnailHash: hash.thumbnail,
+        songHash: hash.song
 
     })
 
