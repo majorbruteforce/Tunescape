@@ -1,6 +1,5 @@
 const multer = require ("multer");
 const express = require ("express");
-const app= express();
 const Route= express.Router();
 const { uploadToS3 } = require ("../s3-modules/uploadS3.js");
 const { addMusicToDB } = require ("../database/controllers/musicDB.js");

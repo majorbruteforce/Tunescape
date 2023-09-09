@@ -9,7 +9,8 @@ async function addMusicToDB(music,hash){
         const newSong= new Song({
             title: music.title,
             artist: music.artist,
-            uploadedBy: music.uid,
+            uploadedBy: music.uploadedby,
+            uid: music.uid,
             thumbnailHash: hash.thumbnailHash,
             musicHash: hash.musicHash
         })
@@ -21,6 +22,11 @@ async function addMusicToDB(music,hash){
         console.log(err.message);
     }
 
+}
+
+async function getBuffer(number){
+    const results= await Song.aggregate([{$sample: {size: number}}]);
+    return results;
 }
 
 // async function incrementLikes(songID){
@@ -48,6 +54,7 @@ async function addMusicToDB(music,hash){
 // }
 
 module.exports= {
-    addMusicToDB
+    addMusicToDB,
+    getBuffer
 }
 

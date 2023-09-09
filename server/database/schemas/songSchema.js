@@ -30,6 +30,10 @@ const songSchema= new mongoose.Schema({
         type: String,
         immutable: true       
     },
+    uid: {
+        type: String,
+        immutable: true
+    },
     plays: {
         type: Number,
         default: 0
