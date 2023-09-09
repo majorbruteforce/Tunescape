@@ -1,0 +1,56 @@
+.main__container {
+    width: 35.5rem;
+    height: 38.875rem;
+    flex-shrink: 0;
+    border: 3px solid #FCFCFC;
+    background: #000;
+    margin: auto;
+}
+
+.master__text {
+    color: #FFF;
+    text-align: center;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+    margin-top: 3.13rem;
+    /* 50% */
+}
+
+.song__name {
+    color: #FFF;
+    text-align: center;
+    font-family: Merge One;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+    margin-top: 8.69rem;
+}
+
+.input__area {
+    margin-top: 3rem;
+    margin-left: 3rem;
+    margin-bottom: 10px;
+}
+
+input {
+    margin-top: 10px;
+}
+
+input::placeholder{
+    font-family: 'Poppins';
+}
+
+.upload {
+    width: 12.5rem;
+    height: 3.125rem;
+    flex-shrink: 0;
+    border: 1px solid #FFF;
+    background: #000;
+    margin-left: 12rem;
+    margin-top: 2rem;
+}
+
+

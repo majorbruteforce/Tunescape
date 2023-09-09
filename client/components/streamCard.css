@@ -5,6 +5,13 @@ flex-shrink: 0;
 display: flex;
 margin-bottom: 1rem;
 overflow-y: hidden;
+transition: 0.3s ease-in-out;
+
+}
+.main__container:hover {
+    background-color: rgb(60, 61, 62);
+    z-index: 190;
+    transition: 0.3s ease-in-out;
 }
 
 .main__container > h1,h2,h3,h4,h5,h6,p {
@@ -18,5 +25,21 @@ overflow-y: hidden;
 width: 3.75rem;
 height: 3.75rem;
 flex-shrink: 0;
-margin-right: 4rem;
+margin-right: 1.8rem;
+}
+
+@keyframes scroll {
+    0% {
+      transform: translateX(0); /* Start position */
+    }
+    100% {
+      transform: translateX(-100%); /* End position (fully scrolled) */
+    }
+  }
+
+.card__song {
+    /* marginRight:"1rem",whiteSpace:"nowrap",textOverflow:"ellipsis" */
+    margin-right: 1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

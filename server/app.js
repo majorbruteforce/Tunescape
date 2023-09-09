@@ -2,7 +2,8 @@ const express = require("express");
 const connectToDatabase = require("./database/controllers/connectionDB.js");
 const app = express();
 const uploadRoute= require("./routes/uploadRoute.js")
-
+const cors = require("cors");
+app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 

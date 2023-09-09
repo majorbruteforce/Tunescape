@@ -1,6 +1,7 @@
 import React from "react";
 import "./dashboard.css"
 import Card_dashboard from "@/components/Card_dashboard";
+import Link from "next/link";
 const page = () => {
   return (
     <div id="dashboard">
@@ -15,7 +16,9 @@ const page = () => {
         </div>
       </div>
       <div className="mid">
-        <button id="uploadbtn">Upload  →</button>
+        <Link href='/uploads'>
+        <button id="uploadbtn">Upload →</button>
+        </Link>
       </div>
       <div className="lower">
         <div className="content-bar">

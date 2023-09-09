@@ -14,11 +14,11 @@ const page = () => {
           <path d="M1 0V450" stroke="white" />
         </svg>
         <div style={{marginBottom:"2rem"}}>
-        <StreamCard Song="Count Me Out" Artist="Kendrick Lamar" time="5:06"/>
-        <StreamCard/>
-        <StreamCard/>
-        <StreamCard/>
-        <StreamCard/>
+        <StreamCard Song="Count Me Out" Artist="Kendrick Lamar" Time="5:06" Like="90"/>
+        <StreamCard Song="Yevevo" Artist="Various Artists" Time="2:50" Like="90"/>
+        <StreamCard Song="Count Me Out" Artist="Kendrick Lamar" Time="5:06" Like="90"/>
+        <StreamCard Song="Teri Chuddio ki khankhan" Artist="Kendrick Lamar" Time="5:06" Like="90"/>
+        <StreamCard Song="N95" Artist="Kendrick Lamar" Time="5:06" Like="90"/>
         </div>
       </div>
     </div>

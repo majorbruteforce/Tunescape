@@ -7,17 +7,17 @@ const { addMusicToDB } = require ("../database/controllers/musicDB.js");
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-const uploads = upload.fields([{ name: "music" }, { name: "thumbnail" }]);
+const uploads = upload.fields([{ name: "music",maxCount:1}, { name: "thumbnail",maxCount:1 }]);
 
 Route.post("/", uploads, async (req, res) => {
+  console.log(req.body);
+  console.log("Connection++");
 
   try {
-
     const hash={
       musicHash: '',
       thumbnailHash: ''
     };
-
     const musicFile = req.files.music[0];
     hash.musicHash = await uploadToS3(musicFile);
     const imgFile = req.files.thumbnail[0];
