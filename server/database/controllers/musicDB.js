@@ -9,7 +9,7 @@ async function addMusicToDB(music,hash){
         const newSong= new Song({
             title: music.title,
             artist: music.artist,
-            uploadedBy: music.uploadedby,
+            uploadedBy: music.uploadedBy,
             uid: music.uid,
             thumbnailHash: hash.thumbnailHash,
             musicHash: hash.musicHash
