@@ -14,7 +14,7 @@ const songSchema= new mongoose.Schema({
         required: true
     },
     createdAt:{
-        type: String,
+        type: Date,
         immutable: true,
         default: ()=> Date.now()
     },
@@ -38,9 +38,8 @@ const songSchema= new mongoose.Schema({
         type: Number,
         default: 0
     },
-    likes: {
-        type: Number,
-        default: 0
+    likedBy: {
+        type: [String]
     }
 
 });
