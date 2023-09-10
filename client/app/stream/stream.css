@@ -22,3 +22,14 @@ color: #FFF;
 font-size: 1rem;
 margin-left: 2px;
 }
+
+.card__holder {
+    width: 100%;
+    height: 370px;
+    overflow-x: hidden;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    scrollbar-color: #000;
+    scrollbar-track-color: #000;
+    scrollbar-face-color: #000;
+}
