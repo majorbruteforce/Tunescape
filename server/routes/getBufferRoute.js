@@ -1,6 +1,6 @@
 const express = require("express");
 const Route = express.Router();
-const getBuffer= require("../database/controllers/musicDB.js");
+const {getBuffer}= require("../database/controllers/musicDB.js");
 
 
 Route.post('/',async(req,res)=>{

@@ -11,12 +11,10 @@ const userSchema = new mongoose.Schema({
     immutable: true,
     default: () => Date.now(),
   },
-  profileURL : String,
-//   updatedAt: {
-//     type: Date,
-//     default: () => Date.now(),
-//   },
-//   isAdmin: Boolean,
+  likedSongs: Array,
+  uploadedSongs: Array,
+  likedPlaylists: Array,
+  
 });
 
 module.exports = mongoose.model("User", userSchema);

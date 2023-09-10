@@ -10,6 +10,7 @@
                 music: {
                     title: "title-input",
                     artist: "artist-input",
+                    user: "username",
                     uid: "uid-from-firebase"
 
                 }
