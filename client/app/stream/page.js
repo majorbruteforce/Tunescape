@@ -10,8 +10,15 @@ const page = () => {
 
   useEffect(()=>{
     const fetchData = async()=>{
-      data = await axios.post(apiUrl);
-      console.log("data =" + data.data);
+      axios.post(apiUrl)
+      .then((response) => {
+          console.log('Response from server:', response.data);
+          alert("Success");
+      })
+      .catch((error) => {
+          alert("Failure");
+          console.error('Error:', error);
+      });
     }
     fetchData();
   },[])
