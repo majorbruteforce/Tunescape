@@ -13,7 +13,7 @@ const firebaseConfig = {
   storageBucket: NEXT_PUBLIC_STORAGE_BUCKET,
   messagingSenderId: NEXT_PUBLIC_MESSAGING_SENDER_ID,
   appId: NEXT_PUBLIC_APP_ID,
-  measurementId: NEXT_PUBLIC_MEASUREMENT_ID,
+  measurementId: NEXT_PUBLIC_MEASUREMENT_ID
 };
 
 // Initialize Firebase

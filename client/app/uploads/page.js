@@ -21,6 +21,7 @@ const page = () => {
         formData.append("uid",user?.uid);
         formData.append("music",sfile);
         formData.append("thumbnail",tfile);
+        formData.append("uploadedBy",user?.displayName);
 
         for (const pair of formData.entries()) {
             console.log(pair[0], pair[1]);

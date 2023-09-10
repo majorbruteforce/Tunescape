@@ -6,8 +6,9 @@ display: flex;
 margin-bottom: 1rem;
 overflow-y: hidden;
 transition: 0.3s ease-in-out;
-
+overflow-x: hidden;
 }
+
 .main__container:hover {
     background-color: rgb(60, 61, 62);
     z-index: 190;
@@ -42,4 +43,24 @@ margin-right: 1.8rem;
     margin-right: 1rem;
     white-space: nowrap;
     text-overflow: ellipsis;
+    width: 150px;
+    text-align: left;
+    overflow-x: hidden;
+}
+
+.card__time {
+  margin-right: 5rem;
+  margin-left: 2rem;
+}
+
+.card__like {
+  cursor: pointer;
+}
+
+.card__artist {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 120px;
+  text-align: left;
+  overflow-x: hidden;
 }
