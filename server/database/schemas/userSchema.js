@@ -5,16 +5,31 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  uid: String,
+  uid: {
+    type: String,
+    required: true,
+  },
   createdAt: {
     type: Date,
     immutable: true,
-    default: () => Date.now(),
+    default: Date.now,
   },
-  likedSongs: Array,
-  uploadedSongs: Array,
-  likedPlaylists: Array,
-  
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
+  likedSongs: {
+    type: [mongoose.Schema.Types.ObjectId],
+    default: [],
+  },
+  uploadedSongs: {
+    type: [mongoose.Schema.Types.ObjectId],
+    default: [],
+  },
+  likedPlaylists: {
+    type: [mongoose.Schema.Types.ObjectId],
+    default: [],
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);
