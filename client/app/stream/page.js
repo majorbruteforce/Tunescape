@@ -36,12 +36,12 @@ const page = () => {
         <div className='card__holder'>
           {
             songQueue?.map((song,index)=>{
-              return <StreamCard setMasterSong={setMasterSong} key ={song.uid} Song={song.title} Src={song.thumbnailHash} Artist={song.artist} Time="5:06" Like="90" />
+              return <StreamCard setMasterSong={setMasterSong} key ={song.uid} Song={song.title} musicSrc={song.musicHash} imgSrc={song.thumbnailHash} Artist={song.artist} Time="5:06" Like={song.like} />
           })
           }
-          {
-            console.log("masterSong = ",masterSong)
-          }
+          {/* {
+            alert(masterSong.musicSrc)
+          } */}
         </div>
       </div>
     </div>

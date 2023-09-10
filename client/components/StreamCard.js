@@ -1,13 +1,13 @@
 import React from 'react'
 import "./streamCard.css"
-const StreamCard = ({ Song, Artist, Time, Like, Src, setMasterSong }) => {
+const StreamCard = ({ Song, Artist, Time, Like, imgSrc,musicSrc, setMasterSong }) => {
 
-  const link = `https://d1dgwvpmn80wva.cloudfront.net/${Src}`;
-  
+  const imgLink = `https://d1dgwvpmn80wva.cloudfront.net/${imgSrc}`;
+  const musicLink = `https://d1dgwvpmn80wva.cloudfront.net/${musicSrc}`
   return (
-    <div className='main__container' onClick={() => {setMasterSong({title:Song,artist:Artist,"time":Time,imgSrc:link,like:Like})}} >
+    <div className='main__container' onClick={() => {setMasterSong({title:Song,artist:Artist,"time":Time,imgSrc:imgLink,like:Like,musicSrc:musicLink})}} >
 
-      <img draggable='false' className='thumbnail__image' src={link} alt="" />
+      <img draggable='false' className='thumbnail__image' src={imgLink} alt="" />
       <div style={{ display: "flex" }}>
 
         <h2 className='card__song'>{Song}</h2>
