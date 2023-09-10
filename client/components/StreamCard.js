@@ -7,9 +7,9 @@ const StreamCard = ({Song,Artist,Time,Like}) => {
       <div style={{display:"flex"}}>
       
       <h2 className='card__song'>{Song}</h2>
-      <p >{Artist}</p>
-      <p style={{marginRight:"5rem"}}>{Time}</p>
-      <p style={{cursor:"pointer"}}>{Like}</p>
+      <p className='card__artist'>{Artist}</p>
+      <p className='card__time'>{Time}</p>
+      <p className='card__like'>{Like}</p>
       </div>
     </div>
   )

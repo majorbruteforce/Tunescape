@@ -1,7 +1,21 @@
-import React from 'react'
+"use client"
+import React, { useEffect } from 'react'
 import "./stream.css"
 import StreamCard from '@/components/StreamCard'
+import axios from "axios"
+
 const page = () => {
+  
+  const apiUrl = `http://localhost:3080/get-buffer?number=5`
+
+  useEffect(()=>{
+    const fetchData = async()=>{
+      data = await axios.post(apiUrl);
+      console.log("data =" + data.data);
+    }
+    fetchData();
+  },[])
+  
   return (
     <div className='HOLDER'>
       <div style={{ display: 'flex' }} className='image__container'>
