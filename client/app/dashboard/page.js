@@ -16,8 +16,8 @@ const page = () => {
         </div>
       </div>
       <div className="mid">
-        <Link href='/uploads'>
-        <button id="uploadbtn">Upload →</button>
+      <Link href="/uploads">
+        <button id="uploadbtn">Upload  →</button>
         </Link>
       </div>
       <div className="lower">
