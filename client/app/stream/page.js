@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import { useEffect, useRef, useState} from 'react'
 import "./stream.css"
 import StreamCard from '@/components/StreamCard'
 import axios from "axios"
@@ -8,12 +8,19 @@ const page = () => {
   const [masterSong,setMasterSong] = useState({"title":"Song Name",artist:"Artist"});
   const [songQueue, setSongQueue] = useState();
   const apiUrl = `http://localhost:3080/get-buffer?number=50`
+  const myRef = useRef(null);
+
+  useEffect(()=>{
+    const element = myRef.current;
+    console.log(element)
+  if(element) element.play();
+  },[masterSong])
 
   useEffect(() => {
     const fetchData = async () =>{
       await axios.post(apiUrl)
       .then((response) => {
-        console.log("Fetch ke andar  = " , response.data) ;
+        // console.log("Fetch ke andar  = " , response.data) ;
         setSongQueue(response.data);
       })
       .catch((error) => {
@@ -30,9 +37,9 @@ const page = () => {
       <div style={{ display: 'flex' }} className='image__container'>
         <div>
           <img draggable='false' style={{ marginRight: "34rem" }} className='main__image' src={masterSong?.imgSrc} />
-          <h1 className='master__name'>{masterSong?.title}</h1>
+          <h1  className='master__name'>{masterSong?.title}</h1>
           <h1 className='master__artist'>{masterSong?.artist}</h1>
-          <audio controls src={masterSong?.musicSrc}></audio>
+          <audio ref={myRef} controls src={masterSong?.musicSrc}></audio>
         </div>
         <div className='card__holder'>
           {
