@@ -3,8 +3,12 @@ import { useState} from 'react'
 import "./uploads.css"
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
+
+
 const page = () => {
-    
+
+
+
     const [song,setSongName] = useState("");
     const [artist,setArtistName] = useState("");
     const [duration,setDuration ] = useState(null);
@@ -15,9 +19,9 @@ const page = () => {
 
       const handleUploadClick = () => {
         alert("Posting...");
-        console.log("sfile = ",sfile);
-        const avgBitRate = 128;
-        console.log("length of audio file = ", sfile.size/avgBitRate);
+        // console.log("sfile = ",sfile);
+        // const avgBitRate = 128000;
+        // console.log("length of audio file = ", sfile.size/(avgBitRate*60));
         const formData = new FormData();
         formData.append("title",song);
         formData.append("artist",artist);
