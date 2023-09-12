@@ -15,7 +15,6 @@ const firebaseConfig = {
   appId: NEXT_PUBLIC_APP_ID,
   measurementId: NEXT_PUBLIC_MEASUREMENT_ID
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);

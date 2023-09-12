@@ -86,3 +86,22 @@ html{
 .scrollable-element {
   scrollbar-color: red yellow;
 }
+
+body::-webkit-scrollbar {
+  width: 10px;
+
+  /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(236, 174, 112);
+  /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 0, 0);
+  /* color of the scroll thumb */
+  /* roundness of the scroll thumb */
+  border: 3px solid rgb(0, 0, 0);
+  /* creates padding around scroll thumb */
+}
