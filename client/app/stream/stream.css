@@ -68,8 +68,8 @@
 .media-player {
     position: fixed;
     bottom: 0;
-    background-image: linear-gradient(90deg, #f7f7f7, #f89280);
-
+    /* background-image: linear-gradient(90deg, #f7f7f7, #f89280); */
+    background-color: #000;
   }
   
   #seeker-bar {
@@ -169,3 +169,29 @@
       justify-content: center;
     }
   }
+
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      overflow: hidden;
+      width: 80px;
+      -webkit-appearance: none;
+      background-color: #9a905d;
+    }
+    
+    input[type='range']::-webkit-slider-runnable-track {
+      height: 10px;
+      -webkit-appearance: none;
+      color: #bb3713;
+      margin-top: -1px;
+    }
+    
+    input[type='range']::-webkit-slider-thumb {
+      width: 10px;
+      -webkit-appearance: none;
+      height: 10px;
+      cursor: ew-resize;
+      background: #434343;
+      box-shadow: -80px 0 0 80px #43e5f7;
+    }
+
+}
