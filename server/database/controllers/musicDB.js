@@ -26,8 +26,13 @@ async function addMusicToDB(music,hash){
 }
 
 async function getBuffer(number){
-    const results= await Song.aggregate([{$sample: {size: number}}]);
-    return results;
+    try{
+
+        const results= await Song.aggregate([{$sample: {size: number}}]);
+        return results;
+    }catch(err){
+        console.log(`Error while fetching buffer: `, err.message);
+    }
 }
 
 
