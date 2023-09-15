@@ -22,5 +22,5 @@
 ### /toggle-song-like
     The request must contain :
         1. Song's mongo ID
-        2. User's uid
-    The response is 1 for successful toggle and 0 for unsuccessful
+        2. User's mongo ID
+    The response is 1 for successful toggle and 0 for unsuccessful(String)
