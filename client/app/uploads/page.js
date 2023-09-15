@@ -15,7 +15,7 @@ const Page = () => {
     const [sfile,setSFile] = useState({});
     const [tfile,setTfile] = useState({});
     const { user} = UserAuth();
-    const apiUrl = "https://tunescape-mono-backend.vercel.app/upload";
+    const apiUrl = "https://tunescape-mono-backend.onrender.com/upload";
 
       const handleUploadClick = () => {
         alert("Posting...");
