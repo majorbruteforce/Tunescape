@@ -12,11 +12,12 @@ import repeat from "../public/repeat-button-white.png"
 import volume from "../public/volume.png"
 import Image from "next/image";
 
-const page = () => {  
+const Page = () => {
 
   const [masterSong, setMasterSong] = useState({ "title": "Song Name", artist: "Artist" });
   const [songQueue, setSongQueue] = useState();
-  const [playState,setPlayState] = useState(true);
+  const [playState, setPlayState] = useState(true);
+  let [songID, setSongID] = useState(-1);
   const apiUrl = `http://localhost:3080/get-buffer?number=50`
   const AudioTag = useRef(null);
   const master__name = useRef(null);
@@ -42,7 +43,7 @@ const page = () => {
     const Audio = AudioTag.current;
     const masterSong = master__name.current;
     // console.log(Audio)
-    console.log("mS = ",  masterSong)
+    console.log("mS = ", masterSong)
     if (Audio) {
       Audio.play();
       Audio.style.display = 'none'
@@ -52,17 +53,18 @@ const page = () => {
 
   }, [masterSong]);
 
-  useEffect(()=>{
+
+  useEffect(() => {
     const Audio = AudioTag.current;
-    if(playState===true) Audio.play();
+    if (playState === true) Audio.play();
     else Audio.pause();
-  },[playState])
+  }, [playState])
 
   useEffect(() => {
     const fetchData = async () => {
       await axios.post(apiUrl)
         .then((response) => {
-          // console.log("Fetch ke andar  = " , response.data) ;
+          console.log("Fetch ke andar  = ", response.data);
           setSongQueue(response.data);
         })
         .catch((error) => {
@@ -73,10 +75,20 @@ const page = () => {
     fetchData();
   }, [])
 
-  function playPause() {
-    
-  }
 
+
+  useEffect(() => {
+    function playNextTrack() {
+      if (songQueue) {
+        const nextSong = songQueue[songID];
+        const imgLink = `https://d1dgwvpmn80wva.cloudfront.net/${nextSong.thumbnailHash}`;
+        const musicLink = `https://d1dgwvpmn80wva.cloudfront.net/${nextSong.musicHash}`
+        setMasterSong({ title: nextSong.title, artist: nextSong.artist, "time": nextSong.duration, imgSrc: imgLink, like: nextSong.like, musicSrc: musicLink, uploadedBy: nextSong.uploadedBy })
+      }
+    }
+
+    playNextTrack();
+  }, [songID])
 
   return (
     <div className='HOLDER'>
@@ -84,32 +96,31 @@ const page = () => {
         <div>
           <img draggable='false' style={{ marginRight: "34rem" }} className='main__image' src={masterSong?.imgSrc} />
           <h1 ref={master__name} className='master__name'>{masterSong?.title}</h1>
-          <h1 className='master__artist'>{masterSong?.artist}<br/>Uploaded By: {masterSong?.uploadedBy}</h1>
+          <h1 className='master__artist'>{masterSong?.artist}<br />Uploaded By: {masterSong?.uploadedBy}</h1>
           <audio ref={AudioTag} controls src={masterSong?.musicSrc}></audio>
         </div>
         <div className='card__holder'>
           {
             songQueue?.map((song, index) => {
-              return <StreamCard setMasterSong={setMasterSong} key={song.uid} Song={song.title} musicSrc={song.musicHash} imgSrc={song.thumbnailHash} Artist={song.artist} Time={song.duration} Like={song.like} uploadedBy={song.uploadedBy} />
+              return <StreamCard setMasterSong={setMasterSong} testKey={index} key={index} Song={song.title} musicSrc={song.musicHash} imgSrc={song.thumbnailHash} Artist={song.artist} Time={song.duration} Like={song.like} uploadedBy={song.uploadedBy} />
             })
           }
         </div>
       </div>
-
       <div class="media-player ">
         <input type="range" id="seeker-bar" value="40" min="0" max="100" step="0.1" />
         <div class="media">
           <div className="false"></div>
           <div class="media-buttons">
             <Image src={random} alt="" class="randomize" />
-          <Image src={prevtrack} alt="" onclick="playPrevious()" class="previous" />
-            {playState?(<Image src={pause} alt="" onClick={()=>setPlayState(prev=>prev = !prev)} id="play" class="play-pause" />):(<Image src={play} alt="" id="pause" onClick={()=>setPlayState(prev=>prev = !prev)} class="play-pause" />)}
-            <Image src={nexttrack} alt="" class="next" />
+            <Image src={prevtrack}  alt="" onClick={() => {setSongID(prev=>prev = --prev) }} class="previous" />
+            {playState ? (<Image src={pause} alt="" onClick={() => setPlayState(prev => prev = !prev)} id="play" class="play-pause" />) : (<Image src={play} alt="" id="pause" onClick={() => setPlayState(prev => prev = !prev)} class="play-pause" />)}
+            <Image src={nexttrack} onClick={() => {setSongID(prev=>prev = ++prev) }} alt="" class="next" />
             <Image src={repeat} alt="" class="repeat" />
           </div>
           <div class="volume">
             <Image src={volume} alt="" />
-                    <input type="range" value="60" min="0" max="100" id="volume-seeker" />
+            <input type="range" value="60" min="0" max="100" id="volume-seeker" />
           </div>
         </div>
       </div>
@@ -117,4 +128,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

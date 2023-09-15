@@ -5,7 +5,7 @@ import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
 
 
-const page = () => {
+const Page = () => {
 
 
 
@@ -81,4 +81,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

@@ -3,7 +3,7 @@ import { UserAuth } from '@/app/context/AuthContext';
 import React, { useEffect, useState } from 'react'
 import "./profile.css"
 
-const page = () => {
+const Page = () => {
   
   const [greet,setGreet] = useState("")
   
@@ -26,4 +26,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
