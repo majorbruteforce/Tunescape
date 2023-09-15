@@ -12,7 +12,9 @@ app.use(express.json());
 // app.use(express.static('public'));
 
 connectToDatabase();
-
+app.get('/',(req,res)=>{
+  res.send();
+})
 app.use('/upload', uploadSongRoute);
 app.use('/get-buffer', getBufferRoute);
 app.use('/create-user', addUserRoute);
