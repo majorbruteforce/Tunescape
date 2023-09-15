@@ -31,22 +31,28 @@ async function getBuffer(number){
 }
 
 
-async function toggleSongLikes(songID, uid){
+async function toggleSongLikes(songID, userID){
     const song= await Song.findById(songID);
     if (!song){
         console.log(`Song ${songID} not found while toggling like.`);
         return 0;
     }
 
-    const indexOfUser= song.likedBy.indexOf(uid);
+    const indexOfUser= song.likedBy.indexOf(userID);
     try
     
     {
         if (indexOfUser == -1){
-        song.likedBy.push(uid);
+        Song.updateOne({ _id: songID }, { $push: { likedBy: userID }}).then(()=>{
+            return 1;
+        })
     }
     else{
-        song.likedBy.splice(indexOfUser,1);
+        Song.updateOne({ _id: songID }, { $pull: { likedBy: userID } }).then(
+          () => {
+            return 1;
+          }
+        );
     }
      
     return 1;
