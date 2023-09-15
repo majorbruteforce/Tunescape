@@ -6,9 +6,10 @@ const getBufferRoute= require("./routes/getBufferRoute.js");
 const addUserRoute= require("./routes/addUserRoute.js");
 const toggleSongLikeRoute= require("./routes/toggleSongLikeRoute.js");
 const cors = require("cors");
+const PORT= 3000;
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 connectToDatabase();
 
@@ -21,6 +22,6 @@ app.use('/get-buffer', getBufferRoute);
 app.use('/create-user', addUserRoute);
 app.use('/toggle-song-like', toggleSongLikeRoute);
 
-app.listen(3080, () => {
-  console.log(`Server live at http://127.0.0.1:3080`);
+app.listen(process.env.PORT || PORT, () => {
+  console.log(`Server is live`);
 });
