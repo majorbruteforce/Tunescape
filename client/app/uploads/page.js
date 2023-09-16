@@ -1,13 +1,10 @@
 "use client"
-import { useState} from 'react'
+import { useEffect, useState} from 'react'
 import "./uploads.css"
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
 
-
 const Page = () => {
-
-
 
     const [song,setSongName] = useState("");
     const [artist,setArtistName] = useState("");
@@ -17,11 +14,12 @@ const Page = () => {
     const { user} = UserAuth();
     const apiUrl = "https://tunescape-mono-backend.onrender.com/upload";
 
+    useEffect(()=>{
+        console.log('sfile = ' , sfile);
+    },sfile)
+
       const handleUploadClick = () => {
         alert("Posting...");
-        // console.log("sfile = ",sfile);
-        // const avgBitRate = 128000;
-        // console.log("length of audio file = ", sfile.size/(avgBitRate*60));
         const formData = new FormData();
         formData.append("title",song);
         formData.append("artist",artist);
@@ -66,7 +64,7 @@ const Page = () => {
 
             <div className='input__area'>
                 <h1 className='song__text'>Drop-da-Song</h1>
-                <input type="file" name="music" onChange={(e)=>{setSFile(e.target.files[0])}} id="song_name" placeholder='"Future"' />
+                <input type="file" name="music" onChange={(e)=>{console.log(`sfile dur = ` ,e.target.files[0])}} id="song_name" placeholder='"Future"' />
             </div>
 
             <div className='input__area'>

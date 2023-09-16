@@ -80,6 +80,8 @@ const Page = () => {
   useEffect(() => {
     function playNextTrack() {
       if (songQueue) {
+        if (songID >songQueue.length-1) songID = 0;
+        else if(songID <0) songID = songQueue.length-1; 
         const nextSong = songQueue[songID];
         const imgLink = `https://d1dgwvpmn80wva.cloudfront.net/${nextSong.thumbnailHash}`;
         const musicLink = `https://d1dgwvpmn80wva.cloudfront.net/${nextSong.musicHash}`
