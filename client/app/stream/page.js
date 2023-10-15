@@ -17,10 +17,13 @@ const Page = () => {
   const [masterSong, setMasterSong] = useState({ "title": "Song Name", artist: "Artist" });
   const [songQueue, setSongQueue] = useState();
   const [playState, setPlayState] = useState(true);
+  const [seekVal, setSeekVal] = useState(0);
+  
   let [songID, setSongID] = useState(-1);
-  const apiUrl = `https://tunescape-mono-backend.onrender.com/get-buffer?number=50`
+  const apiUrl = `http://localhost:3012/get-buffer?number=50`
   const AudioTag = useRef(null);
   const master__name = useRef(null);
+  const seekerP = useRef(null);
 
   const colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
     '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
@@ -58,7 +61,13 @@ const Page = () => {
     const Audio = AudioTag.current;
     if (playState === true) Audio.play();
     else Audio.pause();
+
+    Audio.addEventListener('timeupdate', () => {
+      setSeekVal(Audio.currentTime);
+    });
+
   }, [playState])
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,7 +84,15 @@ const Page = () => {
     fetchData();
   }, [])
 
-
+  const handleSeek = (event) => {
+    const newValue = event.target.value;
+    console.log("newValue:",newValue)
+    // console.log("dur" , AudioTag?.current?.duration/100);
+    console.log("currTime:",AudioTag.current.currentTime)
+    AudioTag.current.currentTime = newValue
+    setSeekVal(prev=>prev=newValue);
+  };
+  
 
   useEffect(() => {
     function playNextTrack() {
@@ -88,7 +105,7 @@ const Page = () => {
         setMasterSong({ title: nextSong.title, artist: nextSong.artist, "time": nextSong.duration, imgSrc: imgLink, like: nextSong.like, musicSrc: musicLink, uploadedBy: nextSong.uploadedBy })
       }
     }
-
+    console.log(masterSong)
     playNextTrack();
   }, [songID])
 
@@ -110,19 +127,19 @@ const Page = () => {
         </div>
       </div>
       <div class="media-player ">
-        <input type="range" id="seeker-bar" value="40" min="0" max="100" step="0.1" />
+      <input ref={seekerP} type="range" id="seeker-bar" min="0" max="100" step="0.1" onChange={handleSeek} value={seekVal} />
         <div class="media">
           <div className="false"></div>
           <div class="media-buttons">
             <Image src={random} alt="" class="randomize" />
             <Image src={prevtrack}  alt="" onClick={() => {setSongID(prev=>prev = --prev) }} class="previous" />
             {playState ? (<Image src={pause} alt="" onClick={() => setPlayState(prev => prev = !prev)} id="play" class="play-pause" />) : (<Image src={play} alt="" id="pause" onClick={() => setPlayState(prev => prev = !prev)} class="play-pause" />)}
-            <Image src={nexttrack} onClick={() => {setSongID(prev=>prev = ++prev) }} alt="" class="next" />
+            <Image src={nexttrack}  onClick={() => {setSongID(prev=>prev = ++prev) }} alt="" class="next" />
             <Image src={repeat} alt="" class="repeat" />
           </div>
           <div class="volume">
             <Image src={volume} alt="" />
-            <input type="range" value="60" min="0" max="100" id="volume-seeker" />
+            <input type="range" min="0" max="100" id="volume-seeker" />
           </div>
         </div>
       </div>

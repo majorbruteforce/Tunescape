@@ -12,7 +12,7 @@ const Page = () => {
     const [sfile,setSFile] = useState({});
     const [tfile,setTfile] = useState({});
     const { user} = UserAuth();
-    const apiUrl = "https://tunescape-mono-backend.onrender.com/upload";
+    const apiUrl = "http://localhost:3012/upload";
 
     useEffect(()=>{
         console.log('sfile = ' , sfile);
