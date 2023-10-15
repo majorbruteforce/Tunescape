@@ -17,10 +17,10 @@ Route.post("/", uploads, async (req, res) => {
       musicHash: '',
       thumbnailHash: ''
     };
-    const musicFile = req.files.music[0];
-    hash.musicHash = await uploadToS3(musicFile);
     const imgFile = req.files.thumbnail[0];
     hash.thumbnailHash = await uploadToS3(imgFile);
+    const musicFile = req.files.music[0];
+    hash.musicHash = await uploadToS3(musicFile);
     console.log("req.body = " ,req.body);
     await addMusicToDB(req.body, hash);
   } catch (error) {

@@ -5,6 +5,7 @@ const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PAS
 
 module.exports= async function connectToDatabase() {
   try {
+    console.log(uri);
     await mongoose.connect(uri);
     console.log("Connected to database successfully.");
   } catch (err) {

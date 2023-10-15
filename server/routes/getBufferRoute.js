@@ -4,6 +4,7 @@ const {getBuffer}= require("../database/controllers/musicDB.js");
 
 
 Route.post('/',async(req,res)=>{
+    console.log("request!")
     const songs= await getBuffer(parseInt(req.query.number));
     res.json(songs);
 });
