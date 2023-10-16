@@ -1,0 +1,3 @@
+[submodule "live-s"]
+	path = live-s
+	url = https://github.com/majorbruteforce/live-search.git
