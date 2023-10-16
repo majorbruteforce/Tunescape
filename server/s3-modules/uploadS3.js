@@ -24,6 +24,7 @@ function generateRandomHash() {
 async function uploadToS3(file) {
   try {
     const uniquehash = generateRandomHash();
+    console.log("uniqueHash::",uniquehash)
     const params = {
       Bucket: bucketName,
       Key: uniquehash,
@@ -31,6 +32,7 @@ async function uploadToS3(file) {
       ContentType: file.mimetype,
     };
     const command = new PutObjectCommand(params);
+    console.log("command ::",command);
     await s3.send(command);
     console.log(`${file.mimetype} file ${params.Key} was uploaded`);
     return params.Key;

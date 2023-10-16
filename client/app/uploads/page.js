@@ -64,7 +64,7 @@ const Page = () => {
 
             <div className='input__area'>
                 <h1 className='song__text'>Drop-da-Song</h1>
-                <input type="file" name="music" onChange={(e)=>{console.log(`sfile dur = ` ,e.target.files[0])}} id="song_name" placeholder='"Future"' />
+                <input type="file" name="music" onChange={(e)=>{setSFile(e.target.files[0])}} id="song_name" placeholder='"Future"' />
             </div>
 
             <div className='input__area'>

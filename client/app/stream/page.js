@@ -18,6 +18,7 @@ const Page = () => {
   const [songQueue, setSongQueue] = useState();
   const [playState, setPlayState] = useState(true);
   const [seekVal, setSeekVal] = useState(0);
+  const [duration, setDuration] = useState(100);
   
   let [songID, setSongID] = useState(-1);
   const apiUrl = `http://localhost:3012/get-buffer?number=50`
@@ -45,25 +46,36 @@ const Page = () => {
   useEffect(() => {
     const Audio = AudioTag.current;
     const masterSong = master__name.current;
-    // console.log(Audio)
-    console.log("mS = ", masterSong)
+  
+    const handleLoadedMetadata = () => {
+      if (Audio && Audio.duration && !isNaN(Audio.duration)) {
+        setDuration(Audio.duration);
+      }
+    };
+
     if (Audio) {
       Audio.play();
-      Audio.style.display = 'none'
+      Audio.style.display = 'none';
+      Audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+      // Audio.addEventListener('ended',playNextTrack);
     }
-    masterSong.style.backgroundImage = `linear-gradient(90deg, #f7f7f7, ${colorArray[Math.floor(Math.random() * 39)]})`
-
-
-  }, [masterSong]);
-
-
+  
+    masterSong.style.backgroundImage = `linear-gradient(90deg, #f7f7f7, ${colorArray[Math.floor(Math.random() * 39)]})`;
+  
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      if (Audio) {
+        Audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      }
+    };
+  }, [masterSong, duration]);
+  
   useEffect(() => {
     const Audio = AudioTag.current;
     if (playState === true) Audio.play();
     else Audio.pause();
-
     Audio.addEventListener('timeupdate', () => {
-      setSeekVal(Audio.currentTime);
+      setSeekVal(Audio.currentTime/1);
     });
 
   }, [playState])
@@ -73,7 +85,6 @@ const Page = () => {
     const fetchData = async () => {
       await axios.post(apiUrl)
         .then((response) => {
-          console.log("Fetch ke andar  = ", response.data);
           setSongQueue(response.data);
         })
         .catch((error) => {
@@ -90,22 +101,23 @@ const Page = () => {
     // console.log("dur" , AudioTag?.current?.duration/100);
     console.log("currTime:",AudioTag.current.currentTime)
     AudioTag.current.currentTime = newValue
-    setSeekVal(prev=>prev=newValue);
+    setSeekVal(prev=>{prev=newValue});
   };
   
-
-  useEffect(() => {
-    function playNextTrack() {
-      if (songQueue) {
-        if (songID >songQueue.length-1) songID = 0;
-        else if(songID <0) songID = songQueue.length-1; 
-        const nextSong = songQueue[songID];
-        const imgLink = `https://d1dgwvpmn80wva.cloudfront.net/${nextSong.thumbnailHash}`;
-        const musicLink = `https://d1dgwvpmn80wva.cloudfront.net/${nextSong.musicHash}`
-        setMasterSong({ title: nextSong.title, artist: nextSong.artist, "time": nextSong.duration, imgSrc: imgLink, like: nextSong.like, musicSrc: musicLink, uploadedBy: nextSong.uploadedBy })
-      }
+  function playNextTrack() {
+    console.log("In playNextTrack.")
+    console.log("songID b4 work ::",setSongID(prev=>{console.log(prev)}))
+    if (songQueue) {
+      if (songID >songQueue.length-1) songID = 0;
+      else if(songID <0) songID = songQueue.length-1; 
+      console.log("songID ::",songID);
+      const nextSong = songQueue[songID];
+      const imgLink = `https://d1dgwvpmn80wva.cloudfront.net/${nextSong.thumbnailHash}`;
+      const musicLink = `https://d1dgwvpmn80wva.cloudfront.net/${nextSong.musicHash}`
+      setMasterSong({ title: nextSong.title, artist: nextSong.artist, "time": nextSong.duration, imgSrc: imgLink, like: nextSong.like, musicSrc: musicLink, uploadedBy: nextSong.uploadedBy })
     }
-    console.log(masterSong)
+  }
+  useEffect(() => {
     playNextTrack();
   }, [songID])
 
@@ -127,7 +139,8 @@ const Page = () => {
         </div>
       </div>
       <div class="media-player ">
-      <input ref={seekerP} type="range" id="seeker-bar" min="0" max="100" step="0.1" onChange={handleSeek} value={seekVal} />
+      <input ref={seekerP} type="range" id="seeker-bar" min="0" max={duration} step="0.1" onChange={handleSeek} value={seekVal} />
+  
         <div class="media">
           <div className="false"></div>
           <div class="media-buttons">

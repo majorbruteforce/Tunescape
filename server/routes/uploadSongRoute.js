@@ -9,17 +9,17 @@ const upload = multer({ storage: storage });
 const uploads = upload.fields([{ name: "music",maxCount:1}, { name: "thumbnail",maxCount:1 }]);
 
 Route.post("/", uploads, async (req, res) => {
-  console.log(req.body);
   console.log("Connection++");
-
   try {
     const hash={
       musicHash: '',
       thumbnailHash: ''
     };
     const imgFile = req.files.thumbnail[0];
+    console.log("imgFile::",imgFile);
     hash.thumbnailHash = await uploadToS3(imgFile);
     const musicFile = req.files.music[0];
+    console.log("musicFile::",musicFile);
     hash.musicHash = await uploadToS3(musicFile);
     console.log("req.body = " ,req.body);
     await addMusicToDB(req.body, hash);
