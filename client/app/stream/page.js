@@ -20,7 +20,7 @@ const Page = () => {
   const [seekVal, setSeekVal] = useState(0);
   const [duration, setDuration] = useState(100);
   
-  let [songID, setSongID] = useState(-1);
+  let [songID, setSongID] = useState(null);
   const apiUrl = `http://localhost:3012/get-buffer?number=50`
   const AudioTag = useRef(null);
   const master__name = useRef(null);
@@ -105,18 +105,30 @@ const Page = () => {
   };
   
   function playNextTrack() {
-    console.log("In playNextTrack.")
-    console.log("songID b4 work ::",setSongID(prev=>{console.log(prev)}))
     if (songQueue) {
-      if (songID >songQueue.length-1) songID = 0;
-      else if(songID <0) songID = songQueue.length-1; 
-      console.log("songID ::",songID);
-      const nextSong = songQueue[songID];
-      const imgLink = `https://d1dgwvpmn80wva.cloudfront.net/${nextSong.thumbnailHash}`;
-      const musicLink = `https://d1dgwvpmn80wva.cloudfront.net/${nextSong.musicHash}`
-      setMasterSong({ title: nextSong.title, artist: nextSong.artist, "time": nextSong.duration, imgSrc: imgLink, like: nextSong.like, musicSrc: musicLink, uploadedBy: nextSong.uploadedBy })
+      if (songID >= songQueue.length) {
+        setSongID(0);
+      } else if (songID < 0) {
+        setSongID(songQueue.length - 1);
+      } else {
+        console.log("songID ::", songID);
+        const nextSong = songQueue[songID];
+        const imgLink = `https://d1dgwvpmn80wva.cloudfront.net/${nextSong.thumbnailHash}`;
+        const musicLink = `https://d1dgwvpmn80wva.cloudfront.net/${nextSong.musicHash}`;
+        setMasterSong({
+          title: nextSong.title,
+          artist: nextSong.artist,
+          time: nextSong.duration,
+          imgSrc: imgLink,
+          like: nextSong.like,
+          musicSrc: musicLink,
+          uploadedBy: nextSong.uploadedBy,
+        });
+      }
     }
   }
+
+  
   useEffect(() => {
     playNextTrack();
   }, [songID])
