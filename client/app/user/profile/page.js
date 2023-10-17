@@ -18,7 +18,6 @@ const Page = () => {
   
   const { user} = UserAuth();
   return (
-
     <div className='main__box'>
       <h1 className='greet'>Good {greet},</h1>
       <h1 className='userName'>{user?.displayName}</h1>

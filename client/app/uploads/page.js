@@ -12,7 +12,7 @@ const Page = () => {
     const [sfile,setSFile] = useState({});
     const [tfile,setTfile] = useState({});
     const { user} = UserAuth();
-    const apiUrl = "http://localhost:3012/upload";
+    const apiUrl = "https://tunescape-mono-backend.vercel.app/upload";
 
     useEffect(()=>{
         console.log('sfile = ' , sfile);

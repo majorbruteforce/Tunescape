@@ -11,13 +11,13 @@ export default function Home() {
       <br />
       <h2 className='byyou'>BY YOU.FOR YOU.</h2>
       <div className='main__header'>
-        <h1>JOIN THE COMMUNITY</h1>
+        <h1>Join The Community.</h1>
         <div className='textual__data'>
-          <p className='para__text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi nihil commodi quia animi cumque vitae nobis distinctio? Eveniet excepturi voluptates sint magnam quidem ex! Obcaecati debitis vel cumque ipsa omnis doloremque aut incidunt.</p>
+          <h3 className='para__text'>Where melodies meet technology and where the world's music becomes a symphony of shared experiences. Whether you're looking for the latest hits or diving deep into the archives of timeless classics, Tunescape has something for every music aficionado, delivered with love, passion, and a touch of digital magic.</h3>
         </div>
-        <h1>JOIN THE COMMUNITY</h1>
+        <h1>Power Of Cloud</h1>
         <div className='textual__data'>
-          <p className='para__text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi nihil commodi quia animi cumque vitae nobis distinctio? Eveniet excepturi voluptates sint magnam quidem ex! Obcaecati debitis vel cumque ipsa omnis doloremque aut incidunt.</p>
+          <p className='para__text'>At Tunescape, we believe that every beat, every note, and every rhythm has a story to tell. With our cutting-edge cloud-based infrastructure, we ensure that these musical tales find their way to your ears in their purest form. Say goodbye to the limitations of physical storage and hello to an expansive library that knows no bounds.</p>
         </div>
       </div>
     </div>
