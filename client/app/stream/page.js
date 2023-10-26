@@ -21,7 +21,7 @@ const Page = () => {
   const [duration, setDuration] = useState(100);
   
   let [songID, setSongID] = useState(null);
-  const apiUrl = `https://tunescape-mono-backend.vercel.app/get-buffer?number=50`
+  const apiUrl = `https://tunescape-backend-service.onrender.com/get-buffer?number=50`
   const AudioTag = useRef(null);
   const master__name = useRef(null);
   const seekerP = useRef(null);
