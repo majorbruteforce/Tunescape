@@ -13,7 +13,7 @@ app.use(express.json());
 
 connectToDatabase();
 app.get('/',(req,res)=>{
-  res.send();
+  res.send("hi");
 })
 app.use('/upload', uploadSongRoute);
 app.use('/get-buffer', getBufferRoute);
