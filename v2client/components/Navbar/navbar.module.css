@@ -1,0 +1,41 @@
+/* Add these styles to your existing CSS or create a new stylesheet */
+@media (max-width: 768px) {
+    .menu {
+      display: none;
+    }
+  
+    .mobile-menu-btn {
+      display: block;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+    }
+  
+    .mobile-menu {
+      display: block;
+      background: #333;
+      padding: 10px;
+      position: absolute;
+      top: 70px; /* Adjust the top position as needed */
+      width: 100%;
+    }
+  
+    .mobile-menu a {
+      color: white;
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+  
+    .mobile-menu a:hover {
+      background-color: #555;
+    }
+  
+    .mobile-menu-open {
+      padding-bottom: 100px; /* Adjust the padding as needed to accommodate the mobile menu */
+    }
+  }
+  

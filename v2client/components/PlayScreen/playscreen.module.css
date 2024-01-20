@@ -1,0 +1,60 @@
+.playscreen{
+    overflow: hidden;
+    height: 90vh
+}
+
+.cardHolder {
+    width: 20vw;
+    height: auto;
+    margin-top: 8rem;
+    margin-left: 12rem;
+}
+        
+.songName {
+    font-size: 3vw; 
+    margin-left: 12rem; 
+}
+
+.artist {
+    font-size: 1.3vw;
+    margin-left: 12rem;
+}
+
+.imageAndCardsContainer {
+    display: flex;
+    justify-content: space-around; /* Adjust as needed */
+    align-items: center; /* Adjust as needed */
+    margin-left: 0px;
+    margin-right: 20px;
+    gap: 5vw;
+}
+
+.container {
+    width: 100%;
+    height: 370px;
+    overflow-x: hidden;
+    margin-bottom: 2rem;
+    margin-left: 30vw;
+    cursor: pointer;
+    scrollbar-color: #000;
+    scrollbar-track-color: #000;
+    scrollbar-face-color: #000;
+}
+
+
+@media screen and (max-width:500px) {
+    .cardHolder {
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Add this line to center vertically */
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .songName {
+        text-align: center;
+        font-size: 200px; 
+        margin-left: 15rem;  
+    }
+}
+

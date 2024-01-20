@@ -3,7 +3,6 @@ import { useEffect, useState} from 'react'
 import "./uploads.css"
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
-
 const Page = () => {
 
     const [song,setSongName] = useState("");
@@ -12,7 +11,7 @@ const Page = () => {
     const [sfile,setSFile] = useState({});
     const [tfile,setTfile] = useState({});
     const { user} = UserAuth();
-    const apiUrl = "https://localhost:3000/upload";
+    const apiUrl = "http://localhost:3000/upload";
 
     useEffect(()=>{
         console.log('sfile = ' , sfile);
@@ -35,7 +34,6 @@ const Page = () => {
             .then((response) => {
                 // console.log('Response from server:', response.data);
                 alert("Success");
-                // Handle the response data here
             })
             .catch((error) => {
                 alert("Failure");

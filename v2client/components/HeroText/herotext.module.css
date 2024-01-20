@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.music {
+    font-size: 17vw;
+    margin-left: 2.5rem;
+    margin-bottom: 0;
+}
+
+.byfy {
+    font-size: 5vw;
+    margin-left: 4vw;
+    margin-top: -5.5vw;
+}
+
+.herotext {
+    font-size: 2vw;
+    margin-top: 20vh;
+    margin-left: 4vw;
+}
+
+.jtc {
+    margin-top: 10vh;
+    font-size: 8vw;
+    text-align: center;
+    justify-content: center;
+}
+
+
+.jtc2{
+    margin-top: 10vh;
+    font-size: 8vw;
+    text-align: center;
+    justify-content: center;
+}
+
+.jtc3{
+    margin-top: 10vh;
+    font-size: 8vw;
+    text-align: center;
+    justify-content: center;
+}
+
+
+.jtcText {
+    font-weight: 400;
+    max-width: 80%;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+.bboard {
+    width: 50%;
+    text-align: center;
+    justify-content: center;
+    height: 40vh;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+}
+
+.container1 {
+    display: flex;
+    margin-top: 9vh;
+    max-width: 90%;
+    margin: auto;
+    margin-top: 5vh;
+}
+
+.container2 {
+    display: flex;
+    margin-top: 9vh;
+    max-width: 90%;
+    margin: auto;
+    margin-top: 5vh;
+}
+
+@media screen and (max-width:500px) {
+    .music {
+        margin-top: 2vh;
+        font-size: 20vw;
+        text-align: center;
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .container1 {
+        display: flex;
+        max-width: 90%;
+        margin-top: -9vh;
+    }
+
+    .jtc2{
+        font-size: 8vw;
+        text-align: center;
+        justify-content: center;
+        margin-top: -8vh;
+    }
+
+    .jtc3{
+        font-size: 8vw;
+        text-align: center;
+        justify-content: center;
+        margin-top: -8vh;
+    }
+
+    .byfy {
+        margin-top: 0vh;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .herotext {
+        text-align: center;
+        font-size: 2.5vw;
+        margin-top: 2vh;
+        margin-left: 0;
+    }
+
+    .jtc {
+        font-size: 8vw;
+        margin-top: 5vh;
+        text-align: center;
+    }
+
+    .jtcText {
+        margin-top: 2.5vh;
+        font-size: 2.3vw;
+    }
+
+    .container2 {
+        display: flex;
+        max-width: 90%;
+        margin-top: -5vh;
+        justify-content: center;
+
+    }
+
+}

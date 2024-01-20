@@ -1,0 +1,54 @@
+.mainContainer {
+    height: 7vh;
+    flex-shrink: 0;
+    display: flex;
+    margin-bottom: 1rem;
+    overflow-y: hidden;
+    transition: 0.3s ease-in-out;
+    overflow-x: hidden;
+}
+
+.wrapper {
+    overflow-y: scroll;
+    height: auto;
+}
+
+.mainContainer:hover {
+    background-color: rgb(60, 61, 62);
+    z-index: 190;
+    transition: 0.3s ease-in-out;
+}
+
+
+.thumbnailImage {
+    width: 3.75rem;
+    height: 3.75rem;
+    flex-shrink: 0;
+    margin-right: 1.8rem;
+}
+
+.cardSong {
+    margin-right: 1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 150px;
+    text-align: left;
+    overflow-x: hidden;
+}
+
+.cardTime {
+    margin-right: 5rem;
+    margin-left: 2rem;
+}
+
+.cardLike {
+    cursor: pointer;
+}
+
+.cardArtist {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 120px;
+    text-align: left;
+    overflow-x: hidden;
+}
