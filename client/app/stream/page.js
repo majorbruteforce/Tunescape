@@ -22,7 +22,7 @@ const Page = () => {
   const [duration, setDuration] = useState(100);
   
   let [songID, setSongID] = useState(null);
-  const apiUrl = `http://localhost:3000/get-buffer?number=50`
+  const apiUrl = `https://tunescape-mono-backend.onrender.com/get-buffer?number=50`
   const AudioTag = useRef(null);
   const master__name = useRef(null);
   const seekerP = useRef(null);
@@ -71,7 +71,7 @@ const Page = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await axios.post(apiUrl)
+      await axios.get(apiUrl)
         .then((response) => {
           setSongQueue(response.data);
         })
